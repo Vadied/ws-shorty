@@ -1,0 +1,27 @@
+@host = http://localhost:3333
+@route = urls
+@contentType=application/json
+
+### Save short url
+POST {{host}}/{{route}}/short HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "origUrl": "https://www.google.it"
+}
+
+### Save short url Error
+POST {{host}}/{{route}}/short HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "origUrl": "test"
+}
+
+### Recover origin url
+GET  {{host}}/{{route}}/8NbrEToa64fMOBsOY4fp3 HTTP/1.1
+content-type: {{contentType}}
+
+### Recover origin url 404
+GET  {{host}}/{{route}}/no_url HTTP/1.1
+content-type: {{contentType}}
